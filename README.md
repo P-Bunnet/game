@@ -1,2 +1,4 @@
 # tictactoe
-simple tictactoe game 
+https://p-bunnet.github.io/game/tictactoe/
+
+
