@@ -27,13 +27,14 @@ function startGame() {
 
 function turnClick(e) {
   if (typeof initialBoard[e.target.id] == "number") {
-    if (checkTie()) return;
     turn(e.target.id, humanPlayer);
+
     // check win before ai turn
     if (!checkWin(initialBoard, humanPlayer) && !checkTie()) {
       turn(bestSpot(), aiPlayer);
     }
   }
+  checkTie();
 }
 
 function turn(squareId, player) {
