@@ -29,8 +29,14 @@
   </body>
 
   <div class="endgame">
-    <h1>Game Over</h1>
+    <div class="text"></div>
+    <button id="reset" onclick="startGame()">Reset</button>
   </div>
-  <button id="reset" onclick="startGame()">Reset</button>
+  <div class="selectSym">
+    <p>Select symbol:</p>
+    <button onClick="selectSym('X')">X</button>
+    <button onClick="selectSym('O')">O</button>
+  </div>
+
   <script src="script.js"></script>
 </html>
