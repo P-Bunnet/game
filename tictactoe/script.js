@@ -91,8 +91,39 @@ function checkTie() {
 }
 
 function declareWinner(winner) {
+  let cookie = {};
+  document.cookie.split(";").forEach(function (el) {
+    let [k, v] = el.split("=");
+    cookie[k.trim()] = v;
+  });
+  if (cookie.tieGame == undefined) {
+    cookie.tieGame = 0;
+  }
+  if (cookie.win == undefined) {
+    cookie.win = 0;
+  }
+  if (cookie.lose == undefined) {
+    cookie.lose = 1;
+  }
+  if (winner == "Tie Game!") {
+    cookie.tieGame++;
+    document.cookie = "tieGame=" + cookie.tieGame;
+  }
+  if (winner == "You win! (-■_■)") {
+    cookie.win++;
+    document.cookie = "win=" + cookie.win;
+  }
+  if (winner == "You lose! (╯°□°)╯︵ ┻━┻") {
+    cookie.lose++;
+    document.cookie = "lose=" + cookie.lose;
+  }
+
   document.querySelector(".endgame").style.display = "block";
   document.querySelector(".endgame .text").innerText = winner;
+
+  document.querySelector(
+    ".endgame .score"
+  ).innerText = `Wins ${cookie.win} times, Losts ${cookie.lose} Ties ${cookie.tieGame} times`;
 }
 
 function minimax(newBoard, player) {
